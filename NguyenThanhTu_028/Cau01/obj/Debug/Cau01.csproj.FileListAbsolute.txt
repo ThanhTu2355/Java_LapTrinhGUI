@@ -1,7 +1,0 @@
-D:\DATA\NguyenThanhTu_028\Cau01\bin\Debug\Cau01.exe.config
-D:\DATA\NguyenThanhTu_028\Cau01\bin\Debug\Cau01.exe
-D:\DATA\NguyenThanhTu_028\Cau01\bin\Debug\Cau01.pdb
-D:\DATA\NguyenThanhTu_028\Cau01\obj\Debug\Cau01.csproj.AssemblyReference.cache
-D:\DATA\NguyenThanhTu_028\Cau01\obj\Debug\Cau01.csproj.CoreCompileInputs.cache
-D:\DATA\NguyenThanhTu_028\Cau01\obj\Debug\Cau01.exe
-D:\DATA\NguyenThanhTu_028\Cau01\obj\Debug\Cau01.pdb
