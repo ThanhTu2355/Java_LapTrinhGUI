@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import javax.swing.*;
 
 public class JNotepad extends JFrame {
-
+    
     private JMenuBar menuBar;
     private JMenu mFile, mEdit, mFormat, mView, mHelp, mZoom;
     private JMenuItem itemNew, itemOpen, itemSave, itemSaveAs, itemPageSetup, itemPrint, itemExit;
@@ -23,7 +23,8 @@ public class JNotepad extends JFrame {
     private JTextArea txtEditor;
     private JToolBar toolBar;
     private JButton btnNew, btnOpen, btnSave;
-
+    private JFontDialog fontDlg;
+    
     public JNotepad(String title) {
         super(title);
         createMenu();
@@ -34,12 +35,12 @@ public class JNotepad extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
-
+    
     public static void main(String[] args) {
         JNotepad app = new JNotepad("Demo Notepad");
         app.setVisible(true);
     }
-
+    
     private void createMenu() {
         //tao doi tuong thanh thuc don
         menuBar = new JMenuBar();
@@ -102,11 +103,11 @@ public class JNotepad extends JFrame {
         itemZoomIn.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK));
         itemZoomOut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK));
         itemRDZoom.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0, KeyEvent.CTRL_DOWN_MASK));
-        
+
         //gan thanh thuc don vao cua so
         setJMenuBar(menuBar);
     }
-
+    
     private void createGUI() {
         txtEditor = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(txtEditor);
@@ -114,7 +115,7 @@ public class JNotepad extends JFrame {
         txtEditor.setLineWrap(true);
         txtEditor.setFont(new Font("Arial", Font.PLAIN, 20));
     }
-
+    
     private void processEvent() {
         //xu ly nut exit
         itemExit.addActionListener((ActionEvent e) -> {
@@ -142,17 +143,24 @@ public class JNotepad extends JFrame {
                 saveFile();
             }
         });
+        //xu ly nut itemFont
+        itemFont.addActionListener((ActionEvent e) -> {
+            {
+                fontDlg = new JFontDialog(this, true);
+                fontDlg.setVisible(true);
+            }
+        });
     }
-
+    
     private void createToolBar() {
         toolBar = new JToolBar();
         toolBar.add(btnNew = new JButton("New"));
         toolBar.add(btnOpen = new JButton("Open"));
         toolBar.add(btnSave = new JButton("Save"));
-
+        
         add(toolBar, BorderLayout.NORTH);
     }
-
+    
     private void openFile() {
         JFileChooser dlgFile = new JFileChooser();
         if (dlgFile.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -167,7 +175,7 @@ public class JNotepad extends JFrame {
             }
         }
     }
-
+    
     private void saveFile() {
         JFileChooser dlgFile = new JFileChooser();
         if (dlgFile.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -183,4 +191,9 @@ public class JNotepad extends JFrame {
             }
         }
     }
+    
+    public JTextArea getTxtEditor() {
+        return txtEditor;
+    }
+    
 }
